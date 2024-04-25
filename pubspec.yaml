@@ -1,0 +1,259 @@
+name: flutter_explosive_like
+description: "A new Flutter project."
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number is used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+# In Windows, build-name is used as the major, minor, and patch parts
+# of the product and file versions while build-number is used as the build suffix.
+version: 1.0.0+1
+
+environment:
+  sdk: '>=3.2.0 <4.0.0'
+
+# Dependencies specify other packages that your package needs in order to work.
+# To automatically upgrade your package dependencies to the latest versions
+# consider running `flutter pub upgrade --major-versions`. Alternatively,
+# dependencies can be manually updated by changing the version numbers below to
+# the latest version available on pub.dev. To see which dependencies have newer
+# versions available, run `flutter pub outdated`.
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^1.0.2
+
+  flutter_blurhash: ^0.8.2
+
+  flame: ^1.14.0
+
+  camera: ^0.10.5+9
+
+  path_provider: ^2.1.2
+
+  hive: ^2.0.4
+
+  hive_flutter: ^1.1.0
+
+  image: ^4.1.4
+
+  emoji_picker_flutter: ^1.6.3
+
+  animated_text_kit: ^4.2.2
+
+  timeline_tile: ^2.0.0
+
+  lottie: ^2.7.0
+
+  percent_indicator: ^4.2.3
+
+  animate_do: ^3.1.2
+
+  image_picker: ^1.0.7
+  intl: ^0.19.0
+  fl_chart: ^0.66.1
+  table_calendar: ^3.1.0
+  http: ^1.2.0
+  introduction_screen: ^3.1.12
+  video_player: ^2.8.2
+  audioplayers: ^5.2.1
+  assets_audio_player: ^3.1.1
+  carousel_slider: ^4.2.1
+  flutter_staggered_grid_view: ^0.7.0
+  just_audio: ^0.9.36
+  google_maps_flutter: ^2.5.3
+  geolocator: ^10.1.1
+  flutter_svg: ^2.0.9
+  animated_size_and_fade: ^4.0.0
+  flutter_bloc: ^8.1.4
+  cached_network_image: ^3.3.1
+  marquee: ^2.2.3
+  math_expressions: ^2.4.0
+  device_info: ^2.0.3
+  animated_bottom_navigation_bar: ^1.3.3
+  chess: ^0.8.1
+  provider: ^6.1.1
+  sliding_up_panel: ^2.0.0+1
+  better_player: ^0.0.83
+  flutter_spinkit: ^5.2.0
+  pdf: ^3.10.7
+  flutter_pdfview: ^1.3.2
+  flutter_hooks: ^0.20.5
+  photo_view: ^0.14.0
+  rive: ^0.12.4
+  palette_generator: ^0.3.3+3
+  flutter_neon: ^0.1.0+5
+  animations: ^2.0.11
+  appinio_video_player: 1.2.2
+  auto_size_text: ^3.0.0
+  equations: ^5.0.2
+  qr_flutter: ^4.1.0
+  flutter_colorpicker: ^1.0.3
+  args: ^2.4.2
+  url_launcher: ^6.2.5
+  xml2json: ^6.2.2
+  shimmer: ^3.0.0
+  dio: ^5.4.1
+  flutter_typeahead: ^5.0.1
+  wave: ^0.2.2
+  flutter_wallpaper_manager: ^0.0.4
+  flutter_cache_manager: ^3.3.1
+  crypto: ^3.0.3
+  flutter_custom_clippers: ^2.1.0
+  image_gallery_saver: ^2.0.3
+  image_editor: ^1.3.0
+  page_flip: ^0.2.3
+  flutter_3d_controller: ^1.2.1
+  equatable: ^2.0.5
+  bloc: ^8.1.4
+  meta: ^1.10.0
+
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # The "flutter_lints" package below contains a set of recommended lints to
+  # encourage good coding practices. The lint set provided by the package is
+  # activated in the `analysis_options.yaml` file located at the root of your
+  # package. See that file for information about deactivating specific lint
+  # rules and activating additional ones.
+  flutter_lints: ^2.0.0
+
+  hive_generator: ^2.0.0
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter packages.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  
+  assets:
+    - assets/a.png
+    - assets/algeria.png
+    - assets/argentina.png
+    - assets/call_illustration.jpg
+    - assets/make_or_join.jpg
+    - assets/avatar1.png
+    - assets/avatar2.png
+    - assets/avatar3.png
+    - assets/light-on.png
+    - assets/light-off.png
+    - assets/radar-sweep.png
+    - assets/cinema1.jpg
+    - assets/cinema2.jpg
+    - assets/cinema3.jpg
+    - assets/whopper.png
+    - assets/chicken.png
+    - assets/veggie.png
+    - assets/fries.png
+    - assets/onion-rings.png
+    - assets/soft-drink.png
+    - assets/bank1.jpg
+    - assets/bank2.jpg
+    - assets/bank3.jpg
+    - assets/parcel1.jpg
+    - assets/parcel2.jpg
+    - assets/parcel3.jpg
+    - assets/dino.png
+    - assets/cactus.png
+    - assets/sharingan.png
+    - assets/mangekyou.png
+    - assets/glass.png
+    - assets/character1.png
+    - assets/character2.png
+    - assets/cloud_shape.png
+    - assets/dark-cloud-shape.png
+    - assets/cloud.png
+    - assets/car1.png
+    - assets/car2.png
+    - assets/infinity-song.jpg
+    - assets/spaghetti-carbonara.jpg
+    - assets/person.png
+    - assets/images/stickman.png
+    - assets/floor.png
+    - assets/petals.png
+    - assets/manga1.jpg
+    - assets/manga2.jpg
+    - assets/manga3.jpg
+    - assets/goku_ssj_blue.png
+    - assets/goku_ssj_blue_kaioken.png
+    - assets/goku_ultra_instinct.png
+    - assets/vegeta_ssj_blue.png
+    - assets/golden_freezer.png
+    - assets/jiren.png
+    - assets/versus.png
+    - assets/db_bg1.jpg
+    - assets/db_bg2.jpg
+    - assets/db_bg3.jpg
+    - assets/spaceship.png
+    - assets/spider.png
+    - assets/jupiter.png
+    - assets/mars.png
+    - assets/mercury.png
+    - assets/earth.png
+    - assets/saturn.png
+    - assets/uranus.png
+    - assets/venus.png
+    - assets/moon.png
+    - assets/butterfly.png
+    - assets/lemon.png
+    - assets/lemon-slice.png
+    - assets/ball.png
+    - assets/boat.png
+    - assets/whatsapp_logo.png
+    - assets/music.mp3
+    - assets/video.mp4
+    - assets/slow-burn.mp4
+    - assets/opening1.mp4
+    - assets/opening2.mp4
+    - assets/soccer_ball.json
+    - assets/flying_crows.json
+    - assets/spider_animation.riv
+    - assets/Нино_Лейф.glb
+    
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
