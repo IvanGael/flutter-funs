@@ -287,6 +287,7 @@ import 'blocpattern/employee_repository.dart';
 import 'blocpattern/employee_view.dart';
 import 'custom_analog_clock.dart';
 import 'custom_image_reveal_animation.dart';
+import 'file_dropzone.dart';
 import 'morpion_game.dart';
 import 'spinning_animation_card.dart';
 import 'whack_a_mole_game.dart';
@@ -321,7 +322,7 @@ class MyApp extends StatelessWidget {
       //   create: (_) => ChatModel(),
       //   child: const ChatAnimationScreen(),
       // ),
-      home: WordSearchGame(),
+      home: FileDropZoneTestScreen(),
       // home: BlocProvider(
       //   create: (context) => EmployeeBloc(employeeRepository: EmployeeRepository()),
       //   child: EmployeeView(),
