@@ -1,6 +1,7 @@
-// ignore_for_file: library_private_types_in_public_api, unnecessary_null_comparison
+// ignore_for_file: library_private_types_in_public_api, unnecessary_null_comparison, use_build_context_synchronously
 
 import 'dart:typed_data';
+import 'dart:ui';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_explosive_like/image-toolbox/file_service.dart';
@@ -43,6 +44,7 @@ class _FileDropZoneTestScreenState extends State<FileDropZoneTestScreen> {
               countingResult = ctResult;
               imageResult = result;
             });
+            _showBottomSheet(context);
           } catch (error) {
             setState(() {
               uploadStarting = false;
@@ -81,95 +83,151 @@ class _FileDropZoneTestScreenState extends State<FileDropZoneTestScreen> {
       children: [
         Text(
           '${keys.length} object(s) detected : ',
-          style: const TextStyle(color: Colors.black),
+          style: const TextStyle(color: Colors.white, fontSize: 16),
         ),
         const SizedBox(width: 4),
         Text(
-          keys.join(', '),
-          style: const TextStyle(
-            color: Colors.deepPurple, 
+          keys.join(', ').toUpperCase(),
+          style: TextStyle(
+            color: Colors.pink[500]!, 
+            fontSize: 23,
             fontWeight: FontWeight.bold,
+            
           ),
         ),
       ],
     );
   }
 
+
+  void _showBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      builder: (BuildContext context) {
+        return Container(
+              width: 400,
+              height: MediaQuery.of(context).size.height - 300,
+              padding: const EdgeInsets.all(20),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 80,
+                    height: 4,
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10)
+                    ),
+                  ),
+                  const SizedBox(height: 30,),
+                  if (imageResult != null)
+                    Image.memory(
+                      imageResult!,
+                      width: 350,
+                      height: 300,
+                      fit: BoxFit.cover,
+                    ),
+                    const SizedBox(height: 25,),
+                  if (imageResult != null)
+                  displayCountingResult(),
+                ],
+              ),
+            );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 40.0, horizontal: 10),
-          child: Column(
-            children: [
-              FileDropZone(
-                onFilesSelected: onFilesSelected,
-                allowMultiple: false,
+      appBar: AppBar(
+        title: const Row(
+          children: [
+            Icon(Icons.graphic_eq),
+            SizedBox(
+              width: 10,
+            ),
+            Text(
+                  "Objects detection",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                ),
+          ],
+        ),
+        backgroundColor: Colors.blue,
+      ),
+      body: Stack(
+        children: [
+          Container(
+              color: Colors.black.withOpacity(0.2), 
+              child: BackdropFilter(
+                filter: ImageFilter.blur(sigmaX: 20.0, sigmaY: 20.0), 
+                child: Container(
+                  color: Colors.transparent,
+                ),
               ),
-              const SizedBox(
-                height: 10,
-              ),
-              Row(
-                children: [
-                  Expanded(
-                      child: TextButton(
-                    onPressed: uploadStarting == true ? null :  () async {
-                      handleUpload();
-                    },
-                    style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                        uploadStarting == true ? Colors.blue.shade200 : Colors.blue
-                      ),
-                      foregroundColor: MaterialStateProperty.all(Colors.white),
-                      shape: MaterialStateProperty.all(RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(5),
-                      )),
-                      padding:
-                          MaterialStateProperty.all(const EdgeInsets.all(7)),
+            ),
+          Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 10),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Text(
+              "Upload the image to process",
+              style: TextStyle(fontSize: 15),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
+            FileDropZone(
+              onFilesSelected: onFilesSelected,
+              allowMultiple: false,
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+            Row(
+              children: [
+                Expanded(
+                    child: TextButton(
+                  onPressed: uploadStarting == true ? null :  () async {
+                    handleUpload();
+                  },
+                  style: ButtonStyle(
+                    backgroundColor: MaterialStateProperty.all(
+                      uploadStarting == true ? Colors.blue.shade200 : Colors.blue
                     ),
-                    child: Text(
-                      uploadStarting == false ? 'Send' : 'Processing',
-                      style: const TextStyle(fontSize: 13),
-                    ),
-                  )),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Container(
-                width: 500,
-                height: MediaQuery.of(context).size.height - 400,
-                padding: const EdgeInsets.all(20),
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.blue, width: 2)),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    if (imageResult != null)
-                      Image.memory(
-                        imageResult!,
-                        width: 350,
-                        height: 300,
-                        fit: BoxFit.cover,
-                      ),
-                    if (imageResult != null)
-                    displayCountingResult(),
-                    if (uploadStarting == true)
-                      const Center(
+                    foregroundColor: MaterialStateProperty.all(Colors.white),
+                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(5),
+                    )),
+                    padding:
+                        MaterialStateProperty.all(const EdgeInsets.all(7)),
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      if(uploadStarting == true)
+                      SizedBox(
+                        width: 20,
+                        height: 20,
                         child: CircularProgressIndicator(
-                          color: Colors.blue,
+                          color: Colors.blue.shade400,
                         ),
                       ),
-                    if (uploadStarting == false) const Text("...")
-                  ],
-                ),
-              )
-            ],
-          ),
+                      const SizedBox(width: 6,),
+                      Text(
+                        uploadStarting == false ? 'Send' : 'Processing...',
+                        style: const TextStyle(fontSize: 13),
+                      ),
+                    ],
+                  ),
+                )),
+              ],
+            )
+          ],
         ),
+      )
+        ],
       ),
     );
   }
@@ -228,8 +286,8 @@ class _FileDropZoneState extends State<FileDropZone> {
   Widget build(BuildContext context) {
     return GestureDetector(
       child: Container(
-        width: 300,
-        height: 200,
+        width: 500,
+        height: 300,
         padding: const EdgeInsets.all(10),
         decoration: BoxDecoration(
           border: Border.all(color: Colors.grey.shade300, width: 2),
@@ -241,8 +299,8 @@ class _FileDropZoneState extends State<FileDropZone> {
             if (widget.allowMultiple == false && droppedFiles.isNotEmpty)
               Image.file(
                 droppedFiles[0],
-                width: 100,
-                height: 100,
+                width: 200,
+                height: 200,
               ),
             if (widget.allowMultiple == true && droppedFiles.isNotEmpty)
               Wrap(
