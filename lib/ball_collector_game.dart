@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
+import 'package:lottie/lottie.dart';
+
 class BallCollectorGame extends StatefulWidget {
   const BallCollectorGame({Key? key}) : super(key: key);
 
@@ -8,7 +10,6 @@ class BallCollectorGame extends StatefulWidget {
   // ignore: library_private_types_in_public_api
   _GameScreenState createState() => _GameScreenState();
 }
-
 
 class _GameScreenState extends State<BallCollectorGame> {
   double robotX = 0.0;
@@ -26,7 +27,10 @@ class _GameScreenState extends State<BallCollectorGame> {
         title: Row(
           children: [
             const Text("Score : "),
-            Text("$score", style: const TextStyle(fontWeight: FontWeight.bold),)
+            Text(
+              "$score",
+              style: const TextStyle(fontWeight: FontWeight.bold),
+            )
           ],
         ),
         backgroundColor: Colors.deepPurple,
@@ -124,7 +128,7 @@ class _GameScreenState extends State<BallCollectorGame> {
         ballX = (Random().nextInt(gridSize) * cellWidth);
         ballY = (Random().nextInt(gridSize) * cellHeight);
       });
-    } 
+    }
     // else {
     //   if(score > 0){
     //     setState(() {
@@ -154,7 +158,9 @@ class _GameScreenState extends State<BallCollectorGame> {
 
   void moveRobotDown() {
     setState(() {
-      if (robotY < MediaQuery.of(context).size.height - MediaQuery.of(context).size.height / gridSize) {
+      if (robotY <
+          MediaQuery.of(context).size.height -
+              MediaQuery.of(context).size.height / gridSize) {
         robotY += MediaQuery.of(context).size.height / gridSize;
       }
       checkCollision();
@@ -163,15 +169,15 @@ class _GameScreenState extends State<BallCollectorGame> {
 
   void moveRobotRight() {
     setState(() {
-      if (robotX < MediaQuery.of(context).size.width - MediaQuery.of(context).size.width / gridSize) {
+      if (robotX <
+          MediaQuery.of(context).size.width -
+              MediaQuery.of(context).size.width / gridSize) {
         robotX += MediaQuery.of(context).size.width / gridSize;
       }
       checkCollision();
     });
   }
 }
-
-
 
 class Robot extends StatelessWidget {
   const Robot({Key? key}) : super(key: key);
@@ -181,12 +187,16 @@ class Robot extends StatelessWidget {
     return Container(
       width: MediaQuery.of(context).size.width / 5,
       height: MediaQuery.of(context).size.height / 5,
-      decoration: const BoxDecoration(
-        // color: Colors.green,
-        // border: Border.all(color: Colors.black),
-      ),
-      child: Image.asset(
-        "assets/dino.png",
+      decoration: BoxDecoration(
+          // color: Colors.green,
+          border: Border.all(color: Colors.black),
+          ),
+      // child: Image.asset(
+      //   "assets/dino.png",
+      //   fit: BoxFit.cover,
+      // ),
+      child: Lottie.asset(
+        'assets/spider.json',
         fit: BoxFit.cover,
       ),
     );
@@ -203,9 +213,9 @@ class Ball extends StatelessWidget {
         // width: MediaQuery.of(context).size.width / 5,
         // height: MediaQuery.of(context).size.height / 5,
         decoration: const BoxDecoration(
-          // color: Colors.blue,
-          // shape: BoxShape.circle,
-        ),
+            // color: Colors.blue,
+            // shape: BoxShape.circle,
+            ),
         child: Image.asset(
           "assets/ball.png",
           width: 40,

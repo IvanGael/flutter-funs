@@ -122,7 +122,8 @@ class _CharacterChatScreenState extends State<CharacterChattingScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('トチャット'),
+        title: const Text('トチャット', style: TextStyle(color: Colors.white),),
+        backgroundColor: Colors.black,
       ),
       backgroundColor: Colors.white,
       body: Column(

@@ -90,9 +90,8 @@ class _FileDropZoneTestScreenState extends State<FileDropZoneTestScreen> {
           keys.join(', ').toUpperCase(),
           style: TextStyle(
             color: Colors.pink[500]!, 
-            fontSize: 23,
+            fontSize: 20,
             fontWeight: FontWeight.bold,
-            
           ),
         ),
       ],

@@ -120,6 +120,10 @@ dependencies:
   equatable: ^2.0.5
   bloc: ^8.1.4
   meta: ^1.10.0
+  permission_handler: ^11.3.1
+  screenshot: ^2.3.0
+  arrow_path: ^3.1.0
+  flutter_signature_pad: ^3.0.1
 
 
 dev_dependencies:
@@ -229,7 +233,9 @@ flutter:
     - assets/soccer_ball.json
     - assets/flying_crows.json
     - assets/spider_animation.riv
+    - assets/spider.json
     - assets/Нино_Лейф.glb
+    - assets/automate/
     
 
   # An image asset can refer to one or more resolution-specific "variants", see

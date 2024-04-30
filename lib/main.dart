@@ -207,6 +207,7 @@ import 'package:flutter_explosive_like/purchase_receip_screen.dart';
 import 'package:flutter_explosive_like/puzzle_game_screen.dart';
 import 'package:flutter_explosive_like/radar_screen.dart';
 import 'package:flutter_explosive_like/radial_progress_bar.dart';
+import 'package:flutter_explosive_like/rain_drops.dart';
 import 'package:flutter_explosive_like/rainbow_sky_animation.dart';
 import 'package:flutter_explosive_like/rainbow_text_animation.dart';
 import 'package:flutter_explosive_like/recipe_order_screen.dart';
@@ -282,6 +283,7 @@ import 'package:flutter_explosive_like/word_search_game.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:provider/provider.dart';
 
+import 'automate/ui/screens/automate_home_screen.dart';
 import 'blocpattern/employee_bloc.dart';
 import 'blocpattern/employee_repository.dart';
 import 'blocpattern/employee_view.dart';
@@ -289,6 +291,8 @@ import 'custom_analog_clock.dart';
 import 'custom_image_reveal_animation.dart';
 import 'file_dropzone.dart';
 import 'morpion_game.dart';
+import 'slate_drawing/slate_drawing_screen.dart';
+import 'spider_animation.dart';
 import 'spinning_animation_card.dart';
 import 'whack_a_mole_game.dart';
 
@@ -301,6 +305,12 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('photos');
   // await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
+  SystemChrome.restoreSystemUIOverlays();
+  // SystemChrome.setSystemUIOverlayStyle(
+  //   SystemUiOverlayStyle(statusBarColor: Colors.pink, )
+  // );
+  await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]);
+  // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
 
@@ -311,7 +321,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.dark(
+      theme: ThemeData.light(
         // primarySwatch: Colors.blue,
         // visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true
@@ -322,7 +332,7 @@ class MyApp extends StatelessWidget {
       //   create: (_) => ChatModel(),
       //   child: const ChatAnimationScreen(),
       // ),
-      home: FileDropZoneTestScreen(),
+      home: AutomateHomeScreen(),
       // home: BlocProvider(
       //   create: (context) => EmployeeBloc(employeeRepository: EmployeeRepository()),
       //   child: EmployeeView(),
