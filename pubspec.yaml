@@ -183,6 +183,10 @@ flutter:
     - assets/sharingan.png
     - assets/mangekyou.png
     - assets/glass.png
+    - assets/glass2.png
+    - assets/glass2-sans-fond.png
+    - assets/glass3.jpg
+    - assets/water_drop.json
     - assets/character1.png
     - assets/character2.png
     - assets/cloud_shape.png
@@ -196,6 +200,13 @@ flutter:
     - assets/images/stickman.png
     - assets/floor.png
     - assets/petals.png
+    - assets/apple.png
+    - assets/myrtille.png
+    - assets/scan_box.png
+    - assets/scan_box_white.png
+    - assets/scan_box2.png
+    - assets/scan_box2_white.png
+    - assets/watermelon.json
     - assets/manga1.jpg
     - assets/manga2.jpg
     - assets/manga3.jpg

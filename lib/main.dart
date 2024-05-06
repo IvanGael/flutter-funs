@@ -291,9 +291,12 @@ import 'custom_analog_clock.dart';
 import 'custom_image_reveal_animation.dart';
 import 'file_dropzone.dart';
 import 'morpion_game.dart';
+import 'qrcode_scanning_animation.dart';
+import 'radar_vibration_animation.dart';
 import 'slate_drawing/slate_drawing_screen.dart';
 import 'spider_animation.dart';
 import 'spinning_animation_card.dart';
+import 'vibration_animation.dart';
 import 'whack_a_mole_game.dart';
 
 
@@ -305,11 +308,11 @@ void main() async {
   await Hive.initFlutter();
   await Hive.openBox('photos');
   // await SystemChrome.setEnabledSystemUIMode(SystemUiMode.immersive);
-  SystemChrome.restoreSystemUIOverlays();
+  // SystemChrome.restoreSystemUIOverlays();
   // SystemChrome.setSystemUIOverlayStyle(
   //   SystemUiOverlayStyle(statusBarColor: Colors.pink, )
   // );
-  await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]);
+  // await SystemChrome.setPreferredOrientations([DeviceOrientation.landscapeLeft, DeviceOrientation.landscapeLeft]);
   // await SystemChrome.setPreferredOrientations([DeviceOrientation.portraitUp]);
   runApp(const MyApp());
 }
@@ -332,7 +335,7 @@ class MyApp extends StatelessWidget {
       //   create: (_) => ChatModel(),
       //   child: const ChatAnimationScreen(),
       // ),
-      home: AutomateHomeScreen(),
+      home: RadarVibrationAnimation(),
       // home: BlocProvider(
       //   create: (context) => EmployeeBloc(employeeRepository: EmployeeRepository()),
       //   child: EmployeeView(),
@@ -341,3 +344,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
+// compile apk reducing size
+// it-per-abi
