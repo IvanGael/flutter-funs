@@ -124,6 +124,8 @@ dependencies:
   screenshot: ^2.3.0
   arrow_path: ^3.1.0
   flutter_signature_pad: ^3.0.1
+  rxdart: ^0.27.7
+  vector_math: ^2.1.4
 
 
 dev_dependencies:

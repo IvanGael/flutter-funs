@@ -346,5 +346,3 @@ class MyApp extends StatelessWidget {
 
 
 
-// compile apk reducing size
-// it-per-abi
