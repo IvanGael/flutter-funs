@@ -290,6 +290,7 @@ import 'blocpattern/employee_view.dart';
 import 'custom_analog_clock.dart';
 import 'custom_image_reveal_animation.dart';
 import 'file_dropzone.dart';
+import 'gallery_images.dart';
 import 'morpion_game.dart';
 import 'qrcode_scanning_animation.dart';
 import 'radar_vibration_animation.dart';
@@ -335,7 +336,7 @@ class MyApp extends StatelessWidget {
       //   create: (_) => ChatModel(),
       //   child: const ChatAnimationScreen(),
       // ),
-      home: RadarVibrationAnimation(),
+      home: GalleryImagesScreen(),
       // home: BlocProvider(
       //   create: (context) => EmployeeBloc(employeeRepository: EmployeeRepository()),
       //   child: EmployeeView(),
