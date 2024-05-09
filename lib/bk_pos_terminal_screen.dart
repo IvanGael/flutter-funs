@@ -1,5 +1,6 @@
 
 import 'package:flutter/material.dart';
+import 'package:lottie/lottie.dart';
 
 class BkPosTerminalScreen extends StatefulWidget {
   const BkPosTerminalScreen({Key? key}) : super(key: key);
@@ -21,17 +22,50 @@ class _BkPosTerminalScreenState extends State<BkPosTerminalScreen> {
 
   List<MenuItem> selectedItems = [];
 
+
+  placeOrder(){
+    showDialog(
+      context: context, 
+      builder: (context){
+        return AlertDialog(
+          shape: ContinuousRectangleBorder(
+            borderRadius: BorderRadius.circular(16)
+          ),
+          content: SizedBox(
+            width: 235,
+            height: 235,
+            child: Center(
+            child: Column(
+              children: [
+                Lottie.asset(
+                  "assets/place_order.json",
+                  width: 200,
+                  height: 200
+                ),
+                const Text(
+                  "Confirmed",
+                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                )
+              ],
+            ),
+          ),
+          ),
+        );
+      }
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('BK'),
+        title: const Text('Store'),
       ),
       body: Column(
         children: [
           SizedBox(
             width: double.infinity,
-            height: 250,
+            height: 200,
             child: ListView.builder(
               itemCount: menuItems.length,
               scrollDirection: Axis.horizontal,
@@ -53,17 +87,20 @@ class _BkPosTerminalScreenState extends State<BkPosTerminalScreen> {
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
           ),
           Expanded(
-            child: ListView.builder(
+            child: selectedItems.isEmpty ?
+          const Center(
+            child: Text("Nothing selected yet!"),
+          ) :
+            ListView.builder(
               itemCount: selectedItems.length,
               itemBuilder: (context, index) {
-                return MenuItemCard(
+                return SelectedMenuItemCard(
                   menuItem: selectedItems[index],
                   onTap: () {
                     setState(() {
                       selectedItems.removeAt(index);
                     });
-                  },
-                  canRemove: true,
+                  }
                 );
               },
             ),
@@ -71,10 +108,9 @@ class _BkPosTerminalScreenState extends State<BkPosTerminalScreen> {
           const Divider(),
           Padding(
             padding: const EdgeInsets.all(8.0),
-            child: ElevatedButton(
-              onPressed: () {
-                // Implement order placement logic here
-                // print('Placing Order: $selectedItems');
+            child:  ElevatedButton(
+              onPressed: selectedItems.isEmpty ? null : () {
+                placeOrder();
               },
               child: const Text('Place Order'),
             ),
@@ -98,13 +134,11 @@ class MenuItem {
 class MenuItemCard extends StatelessWidget {
   final MenuItem menuItem;
   final VoidCallback onTap;
-  final bool canRemove;
 
   const MenuItemCard({
     Key? key,
     required this.menuItem,
-    required this.onTap,
-    this.canRemove = false,
+    required this.onTap
   }) : super(key: key);
 
   @override
@@ -120,11 +154,11 @@ class MenuItemCard extends StatelessWidget {
             children: [
               Container(
                 width: 100,
-                height: 100,
+                height: 70,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: AssetImage(menuItem.image),
-                    fit: BoxFit.cover,
+                    fit: BoxFit.contain,
                   ),
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -138,22 +172,77 @@ class MenuItemCard extends StatelessWidget {
               Text(
                 '\$${menuItem.price.toStringAsFixed(2)}',
                 style: const TextStyle(fontSize: 16, color: Colors.grey),
-              ),
-              if (canRemove)
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.orangeAccent,
-                      shape: BoxShape.circle
-                    ),
-                    child: IconButton(
-                      icon: const Icon(Icons.remove, color: Colors.white,),
-                      onPressed: onTap,
-                    ),
-                  ),
-                ),
+              )
             ],
+          ),
+        ),
+      ),
+    );
+  }
+}
+
+
+class SelectedMenuItemCard extends StatelessWidget {
+  final MenuItem menuItem;
+  final VoidCallback onTap;
+
+  const SelectedMenuItemCard({
+    Key? key,
+    required this.menuItem,
+    required this.onTap,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 170,
+      child: Card(
+        margin: const EdgeInsets.all(8.0),
+        child: InkWell(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Container(
+                      width: 50,
+                      height: 50,
+                      decoration: BoxDecoration(
+                        image: DecorationImage(
+                          image: AssetImage(menuItem.image),
+                          fit: BoxFit.contain,
+                        ),
+                        borderRadius: BorderRadius.circular(8.0),
+                      ),
+                    ),
+                    Container(
+                      decoration: const BoxDecoration(
+                        color: Colors.orangeAccent,
+                        shape: BoxShape.circle
+                      ),
+                      child: IconButton(
+                        icon: const Icon(Icons.remove, color: Colors.white,),
+                        onPressed: onTap,
+                      ),
+                    )
+                  ],
+                ),
+                const SizedBox(height: 12.0),
+                Text(
+                  menuItem.name,
+                  style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+                ),
+                const SizedBox(height: 6.0),
+                Text(
+                  '\$${menuItem.price.toStringAsFixed(2)}',
+                  style: const TextStyle(fontSize: 16, color: Colors.grey),
+                )
+              ],
+            ),
           ),
         ),
       ),
@@ -172,7 +261,7 @@ class TotalPrice extends StatelessWidget {
 
     return Container(
       padding: const EdgeInsets.all(16.0),
-      color: Colors.grey[200],
+      color: Colors.deepOrangeAccent,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
@@ -182,7 +271,7 @@ class TotalPrice extends StatelessWidget {
           ),
           Text(
             '\$${totalPrice.toStringAsFixed(2)}',
-            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.orange),
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.white),
           ),
         ],
       ),

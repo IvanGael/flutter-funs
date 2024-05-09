@@ -325,7 +325,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: ThemeData.light(
+      theme: ThemeData.dark(
         // primarySwatch: Colors.blue,
         // visualDensity: VisualDensity.adaptivePlatformDensity,
         useMaterial3: true
@@ -336,7 +336,7 @@ class MyApp extends StatelessWidget {
       //   create: (_) => ChatModel(),
       //   child: const ChatAnimationScreen(),
       // ),
-      home: GalleryImagesScreen(),
+      home: BkPosTerminalScreen(),
       // home: BlocProvider(
       //   create: (context) => EmployeeBloc(employeeRepository: EmployeeRepository()),
       //   child: EmployeeView(),

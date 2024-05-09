@@ -250,6 +250,7 @@ flutter:
     - assets/spider.json
     - assets/Нино_Лейф.glb
     - assets/automate/
+    - assets/place_order.json
     
 
   # An image asset can refer to one or more resolution-specific "variants", see
