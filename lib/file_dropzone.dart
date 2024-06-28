@@ -192,15 +192,15 @@ class _FileDropZoneTestScreenState extends State<FileDropZoneTestScreen> {
                     handleUpload();
                   },
                   style: ButtonStyle(
-                    backgroundColor: MaterialStateProperty.all(
+                    backgroundColor: WidgetStateProperty.all(
                       uploadStarting == true ? Colors.blue.shade200 : Colors.blue
                     ),
-                    foregroundColor: MaterialStateProperty.all(Colors.white),
-                    shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                    foregroundColor: WidgetStateProperty.all(Colors.white),
+                    shape: WidgetStateProperty.all(RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(5),
                     )),
                     padding:
-                        MaterialStateProperty.all(const EdgeInsets.all(7)),
+                        WidgetStateProperty.all(const EdgeInsets.all(7)),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -330,12 +330,12 @@ class _FileDropZoneState extends State<FileDropZone> {
                 }
               },
               style: ButtonStyle(
-                backgroundColor: MaterialStateProperty.all(Colors.blue),
-                foregroundColor: MaterialStateProperty.all(Colors.white),
-                shape: MaterialStateProperty.all(RoundedRectangleBorder(
+                backgroundColor: WidgetStateProperty.all(Colors.blue),
+                foregroundColor: WidgetStateProperty.all(Colors.white),
+                shape: WidgetStateProperty.all(RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(5),
                 )),
-                padding: MaterialStateProperty.all(const EdgeInsets.all(7)),
+                padding: WidgetStateProperty.all(const EdgeInsets.all(7)),
               ),
               child: const Row(
                 mainAxisSize: MainAxisSize.min,
